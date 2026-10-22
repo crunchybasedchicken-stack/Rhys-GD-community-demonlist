@@ -65,7 +65,8 @@ export default {
                                 <p>{{ record.percent }}%</p>
                             </td>
                             <td class="user">
-                                <a :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a>
+                                <a v-if="record.link" :href="record.link" target="_blank" class="type-label-lg">{{ record.user }}</a>
+                                <span v-else class="type-label-lg">{{ record.user }}</span>
                             </td>
                             <td class="mobile">
                                 <img v-if="record.mobile" :src="\`/assets/phone-landscape\${store.dark ? '-dark' : ''}.svg\`" alt="Mobile">
