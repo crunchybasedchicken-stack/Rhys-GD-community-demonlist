@@ -3,7 +3,8 @@
     --color-on-background: black;
     --color-background-hover: #eee;
     --color-on-background-hover: black;
-    --color-primary: #0066ff;
+    /* Lighter Purple for White/Light Mode */
+    --color-primary: #9333ea;
     --color-on-primary: white;
     --color-error: #de0000;
     --color-on-error: white;
@@ -16,7 +17,8 @@ header.dark {
     --color-on-background: white;
     --color-background-hover: #27262c;
     --color-on-background-hover: white;
-    --color-primary: #283593;
+    /* Darker Deep Purple for Dark Mode */
+    --color-primary: #581c87;
     --color-primary-disabled: #1f213c;
     --color-on-primary: white;
     --color-error: #de0000;
