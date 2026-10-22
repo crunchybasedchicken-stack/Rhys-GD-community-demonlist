@@ -7,5 +7,12 @@
     "percentToQualify": 67,
     "id": 1391942,
     "difficulty": "Hard Demon",
-    "records": []
+    "records": [
+        {
+            "user": "𝙚𝙩𝙝𝙚𝙧𝙚𝙖𝙡",
+            "link": "https://www.youtube.com/watch?v=MgJeijBGKHU",
+            "percent": 100,
+            "hz": 360
+        }
+    ]
 }
