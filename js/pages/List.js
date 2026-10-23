@@ -89,7 +89,9 @@ export default {
                     <div class="og">
                         <p class="type-label-md">Website layout made by <a href="https://tsl.pages.dev/" target="_blank">TheShittyList</a></p>
                     </div>
-                    <template v-if="editors">
+
+                    <!-- Hidden from view, change v-if="false" back to v-if="editors" whenever you want to display it again -->
+                    <template v-if="false">
                         <h3>List Editors</h3>
                         <ol class="editors">
                             <li v-for="editor in editors">
@@ -99,7 +101,8 @@ export default {
                             </li>
                         </ol>
                     </template>
-                   <h3>Submission Requirements</h3>
+
+                    <h3>Submission Requirements</h3>
                     <p>
                         Extreme Demons require full video proof with clicks or source audio.
                     </p>
