@@ -49,7 +49,7 @@
                 <router-link class="nav__tab" to="/roulette">
                     <span class="type-label-lg">Roulette</span>
                 </router-link>
-                <div class="nav__actions">
+                <div class="nav__actions" style="display: flex; align-items: center; gap: 10px;">
                     <button
                         class="nav__icon"
                         @click.prevent="store.toggleDark()"
@@ -63,7 +63,19 @@
                     <a class="nav__icon" href="https://discord.gg/Uyaup8DcVz">
                         <img src="/assets/discord.svg" alt="Discord Logo" />
                     </a>
-                    <!-- List record submission form, add a link to replace the '#' when putting a link to your list submission form-->
+                    
+                    <!-- Time Machine Dropdown Menu -->
+                    <select 
+                        class="nav__cta type-label-lg" 
+                        style="background: var(--bg-color, #121212); color: inherit; border: 1px solid rgba(255,255,255,0.2); padding: 6px 12px; cursor: pointer; border-radius: 4px;"
+                        v-model="store.snapshot"
+                        @change="window.location.hash = '#/'; location.reload();"
+                    >
+                        <option value="live">🕒 Live List</option>
+                        <option value="oct-week3-2026">📅 Oct Week 3 (2026)</option>
+                    </select>
+
+                    <!-- List record submission form -->
                     <a
                         class="nav__cta type-label-lg"
                         href="https://forms.gle/sUGkJStUgnuFwXEh6"
