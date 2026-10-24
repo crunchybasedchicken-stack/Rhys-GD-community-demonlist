@@ -64,10 +64,9 @@
                         <img src="/assets/discord.svg" alt="Discord Logo" />
                     </a>
                     
-                    <!-- Time Machine Dropdown Menu -->
+                    <!-- Time Machine Dropdown Menu (Compact & Static) -->
                     <select 
-                        class="nav__cta type-label-lg" 
-                        style="background: var(--bg-color, #121212); color: inherit; border: 1px solid rgba(255,255,255,0.2); padding: 6px 12px; cursor: pointer; border-radius: 4px;"
+                        style="background: var(--bg-color, #121212); color: inherit; border: 1px solid rgba(255,255,255,0.2); padding: 4px 8px; cursor: pointer; border-radius: 4px; font-size: 0.85rem; transform: none;"
                         v-model="store.snapshot"
                         @change="window.location.hash = '#/'; location.reload();"
                     >
