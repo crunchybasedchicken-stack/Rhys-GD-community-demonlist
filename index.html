@@ -64,11 +64,11 @@
                         <img src="/assets/discord.svg" alt="Discord Logo" />
                     </a>
                     
-                    <!-- Time Machine Dropdown Menu (Compact & Static) -->
-                    <select 
+                    <!-- Time Machine Dropdown Menu -->
+<select 
     style="background: var(--bg-color, #121212); color: inherit; border: 1px solid rgba(255,255,255,0.2); padding: 4px 8px; cursor: pointer; border-radius: 4px; font-size: 0.85rem; transform: none;"
     :value="store.snapshot"
-    @change="store.setSnapshot($event.target.value); window.location.hash = '#/'; location.reload();"
+    @change="store.setSnapshot($event.target.value)"
 >
     <option value="live">🕒 Live List</option>
     <option value="oct-week2-2026">📅 Oct Week 2 (2026)</option>
