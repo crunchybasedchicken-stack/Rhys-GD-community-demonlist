@@ -7,11 +7,23 @@ import { store } from './main.js';
 const dir = '/data';
 
 export async function fetchList() {
-    const listPath = store.snapshot === 'live' 
-        ? `${dir}/_list.json` 
-        : `${dir}/history/${store.snapshot}.json`;
+    const isSnapshot = store.snapshot !== 'live';
+    const listPath = isSnapshot 
+        ? `${dir}/history/${store.snapshot}.json` 
+        : `${dir}/_list.json`;
 
     try {
+        // If viewing a snapshot, fetch live list to calculate current live ranks
+        let liveListPaths = [];
+        if (isSnapshot) {
+            try {
+                const liveRes = await fetch(`${dir}/_list.json`);
+                liveListPaths = await liveRes.json();
+            } catch {
+                console.error('Failed to fetch live list for live ranks comparison.');
+            }
+        }
+
         const listResult = await fetch(listPath);
         const list = await listResult.json();
         return await Promise.all(
@@ -19,10 +31,21 @@ export async function fetchList() {
                 try {
                     const levelResult = await fetch(`${dir}/${path}.json`);
                     const level = await levelResult.json();
+
+                    // Find live rank (1-indexed) if viewing a snapshot
+                    let liveRank = null;
+                    if (isSnapshot && liveListPaths.length > 0) {
+                        const liveIndex = liveListPaths.indexOf(path);
+                        if (liveIndex !== -1) {
+                            liveRank = liveIndex + 1;
+                        }
+                    }
+
                     return [
                         {
                             ...level,
                             path,
+                            liveRank,
                             records: level.records.sort(
                                 (a, b) => b.percent - a.percent,
                             ),
