@@ -29,8 +29,14 @@ export default {
                             <p v-else class="type-label-lg">Legacy</p>
                         </td>
                         <td class="level" :class="{ 'active': selected == i, 'error': !level }">
-                            <button @click="selected = i">
+                            <button @click="selected = i" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
                                 <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
+                                <span v-if="store.snapshot !== 'live' && level?.liveRank" class="type-label-sm" style="opacity: 0.6; font-size: 0.75rem; margin-top: 2px;">
+                                    #{{ level.liveRank }} now
+                                </span>
+                                <span v-else-if="store.snapshot !== 'live' && !level?.liveRank && level" class="type-label-sm" style="opacity: 0.6; font-size: 0.75rem; margin-top: 2px;">
+                                    Removed live
+                                </span>
                             </button>
                         </td>
                     </tr>
@@ -71,9 +77,10 @@ export default {
                             <td class="mobile">
                                 <img v-if="record.mobile" :src="\`/assets/phone-landscape\${store.dark ? '-dark' : ''}.svg\`" alt="Mobile">
                             </td>
+                            <!-- Hidden for now, remove v-if="false" whenever you want to display Hz again -->
                             <td class="hz" v-if="false">
-    <p>{{ record.hz }}Hz</p>
-</td>
+                                <p>{{ record.hz }}Hz</p>
+                            </td>
                         </tr>
                     </table>
                 </div>
