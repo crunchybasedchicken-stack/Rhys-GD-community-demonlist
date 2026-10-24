@@ -132,6 +132,14 @@ export default {
         roleIconMap,
         store
     }),
+    watch: {
+        'store.snapshot': async function() {
+            this.loading = true;
+            this.list = await fetchList();
+            this.selected = 0;
+            this.loading = false;
+        }
+    },
     computed: {
         level() {
             return this.list[this.selected][0];
