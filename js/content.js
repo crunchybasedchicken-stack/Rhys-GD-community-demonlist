@@ -13,29 +13,32 @@ export async function fetchList() {
         : `${dir}/_list.json`;
 
     try {
-        // If viewing a snapshot, fetch live list to calculate current live ranks
+        // Fetch live list to compare live ranks
         let liveListPaths = [];
-        if (isSnapshot) {
-            try {
-                const liveRes = await fetch(`${dir}/_list.json`);
-                liveListPaths = await liveRes.json();
-            } catch {
-                console.error('Failed to fetch live list for live ranks comparison.');
-            }
+        try {
+            const liveRes = await fetch(`${dir}/_list.json`);
+            liveListPaths = await liveRes.json();
+        } catch {
+            console.error('Failed to fetch live list.');
         }
 
         const listResult = await fetch(listPath);
         const list = await listResult.json();
+
         return await Promise.all(
             list.map(async (path, rank) => {
                 try {
+                    // Clean path name for matching
+                    const cleanPath = path.replace(/\.json$/, '').trim().toLowerCase();
                     const levelResult = await fetch(`${dir}/${path}.json`);
                     const level = await levelResult.json();
 
-                    // Find live rank (1-indexed) if viewing a snapshot
+                    // Find live rank (1-indexed)
                     let liveRank = null;
-                    if (isSnapshot && liveListPaths.length > 0) {
-                        const liveIndex = liveListPaths.indexOf(path);
+                    if (liveListPaths.length > 0) {
+                        const liveIndex = liveListPaths.findIndex(
+                            (p) => p.replace(/\.json$/, '').trim().toLowerCase() === cleanPath
+                        );
                         if (liveIndex !== -1) {
                             liveRank = liveIndex + 1;
                         }
