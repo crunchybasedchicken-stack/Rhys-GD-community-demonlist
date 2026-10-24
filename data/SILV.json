@@ -7,5 +7,12 @@
     "percentToQualify": 72,
     "id": 128647654,
     "difficulty": "Extreme Demon",
-    "records": []
+    "records": [
+        {
+            "user": "sgplayzytt",
+            "percent": 100,
+            "link": "https://youtu.be/7r4vRoWvNc4?si=ToZeXSyWaQ1eGJro", 
+            "hz": 360
+        }
+    ]
 }
