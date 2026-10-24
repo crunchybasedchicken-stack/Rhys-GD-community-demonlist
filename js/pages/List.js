@@ -29,12 +29,12 @@ export default {
                             <p v-else class="type-label-lg">Legacy</p>
                         </td>
                         <td class="level" :class="{ 'active': selected == i, 'error': !level }">
-                            <button @click="selected = i" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left;">
-                                <span class="type-label-lg">{{ level?.name || \`Error (\${err}.json)\` }}</span>
-                                <span v-if="store.snapshot !== 'live' && level?.liveRank" class="type-label-sm" style="opacity: 0.6; font-size: 0.75rem; margin-top: 2px;">
+                            <button @click="selected = i" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; min-height: 48px; padding: 8px 12px; height: auto;">
+                                <span class="type-label-lg" style="line-height: 1.2;">{{ level?.name || \`Error (\${err}.json)\` }}</span>
+                                <span v-if="store.snapshot !== 'live' && level?.liveRank" class="type-label-sm" style="opacity: 0.65; font-size: 0.75rem; margin-top: 4px; line-height: 1;">
                                     #{{ level.liveRank }} now
                                 </span>
-                                <span v-else-if="store.snapshot !== 'live' && !level?.liveRank && level" class="type-label-sm" style="opacity: 0.6; font-size: 0.75rem; margin-top: 2px;">
+                                <span v-else-if="store.snapshot !== 'live' && !level?.liveRank && level" class="type-label-sm" style="opacity: 0.65; font-size: 0.75rem; margin-top: 4px; line-height: 1;">
                                     Removed live
                                 </span>
                             </button>
