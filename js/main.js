@@ -6,7 +6,11 @@ export const store = Vue.reactive({
         this.dark = !this.dark;
         localStorage.setItem('dark', JSON.stringify(this.dark));
     },
-    snapshot: 'live',
+    snapshot: localStorage.getItem('snapshot') || 'live',
+    setSnapshot(val) {
+        this.snapshot = val;
+        localStorage.setItem('snapshot', val);
+    },
 });
 
 const app = Vue.createApp({
