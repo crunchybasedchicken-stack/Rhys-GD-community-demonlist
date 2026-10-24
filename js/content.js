@@ -1,4 +1,5 @@
 import { round, score } from './score.js';
+import { store } from './main.js';
 
 /**
  * Path to directory containing `_list.json` and all levels
@@ -6,13 +7,17 @@ import { round, score } from './score.js';
 const dir = '/data';
 
 export async function fetchList() {
-    const listResult = await fetch(`${dir}/_list.json`);
+    const listPath = store.snapshot === 'live' 
+        ? `${dir}/_list.json` 
+        : `${dir}/history/${store.snapshot}.json`;
+
     try {
+        const listResult = await fetch(listPath);
         const list = await listResult.json();
         return await Promise.all(
             list.map(async (path, rank) => {
-                const levelResult = await fetch(`${dir}/${path}.json`);
                 try {
+                    const levelResult = await fetch(`${dir}/${path}.json`);
                     const level = await levelResult.json();
                     return [
                         {
@@ -31,7 +36,7 @@ export async function fetchList() {
             }),
         );
     } catch {
-        console.error(`Failed to load list.`);
+        console.error(`Failed to load list from ${listPath}.`);
         return null;
     }
 }
