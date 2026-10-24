@@ -1,0 +1,17 @@
+{
+    "name": "Moment",
+    "author": "Lexycat",
+    "creators": [""],
+    "verifier": "MannVr",
+    "verification": "https://www.youtube.com/watch?v=hSfnmT_qNns&pp=0gcJCS8MAYcqIYzv",
+    "percentToQualify": 67,
+    "id": 68848817,
+    "difficulty": "Extreme Demon",
+    "records": [
+        {
+            "user": "sgplayzytt",
+            "percent": 100,
+            "hz": 360
+        } 
+    ]
+}
