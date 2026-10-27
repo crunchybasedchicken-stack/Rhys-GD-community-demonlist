@@ -8,5 +8,10 @@
     "id": 40945673,
     "difficulty": "Hard Demon",
     "records": [
+        {
+            "user": "Friedchicken",
+            "percent": 100,
+            "hz": 360
+        }
     ]
 }
