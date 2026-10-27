@@ -1,0 +1,18 @@
+{
+    "name": "Acu",
+    "author": "neigefeu",
+    "creators": ["neigefeu"],
+    "verifier": "sgplayzytt",
+    "verification": "https://youtu.be/4Gl1W_iBIo8",
+    "percentToQualify": 67,
+    "id": 61079355,
+    "difficulty": "Extreme Demon",
+    "records": [
+        {
+            "user": "rhys",
+            "percent": 100,
+            "link": "https://www.youtube.com/live/HZ63An4N63w", 
+            "hz": 360
+        } 
+    ]
+}
