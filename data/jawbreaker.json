@@ -7,5 +7,11 @@
     "percentToQualify": 70,
     "id": 6939821,
     "difficulty": "Hard Demon",
-    "records": []
+    "records": [
+        {
+            "user": "Friedchicken",
+            "percent": 100,
+            "hz": 360
+        }
+    ]
 }
